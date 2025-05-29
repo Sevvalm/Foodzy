@@ -37,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="24dp"
         android:backgroundTint="@color/sepet"
         android:text="SEPETİ ONAYLA"
         android:textStyle="bold"
