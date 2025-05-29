@@ -2,6 +2,7 @@ package com.example.foodzy.ui.fragment
 
 import android.animation.Animator
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -70,9 +71,20 @@ class SepetFragment : Fragment() {
             })
         }
     }
-    private fun observeViewModel(){
+    private fun observeViewModel() {
         viewModel.sepetListesi.observe(viewLifecycleOwner) { liste ->
-            sepetAdapter.updateList(liste ?: emptyList())
+            if (liste.isNullOrEmpty()) {
+                Log.e("SepetFragment", "Sepet boş! RecyclerView ve buton gizleniyor, TextView görünüyor.")
+                binding.sepetRv.visibility = View.GONE
+                binding.buttonSepetOnayla.visibility = View.GONE
+                binding.textViewSepetBos.visibility = View.VISIBLE
+            } else {
+                Log.d("SepetFragment", "Sepet dolu! RecyclerView ve buton görünüyor, TextView gizleniyor. Ürün sayısı: ${liste.size}")
+                sepetAdapter.updateList(liste)
+                binding.sepetRv.visibility = View.VISIBLE
+                binding.buttonSepetOnayla.visibility = View.VISIBLE
+                binding.textViewSepetBos.visibility = View.GONE
+            }
         }
     }
     override fun onResume() {

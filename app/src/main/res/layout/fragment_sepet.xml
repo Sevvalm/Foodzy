@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F9FA"
     tools:context=".ui.fragment.SepetFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -53,6 +54,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarSepet" />
 
+    <TextView
+        android:id="@+id/textViewSepetBos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Burada Gösterilecek Bir Şey Yok!"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
 
     <View
         android:id="@+id/animationOverlay"
@@ -60,10 +77,10 @@
         android:layout_height="0dp"
         android:background="#80000000"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.airbnb.lottie.LottieAnimationView
@@ -71,26 +88,26 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:visibility="gone"
-        app:lottie_fileName="deliveryanimation.json"
-        app:lottie_autoPlay="false"
-        app:lottie_loop="false"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="deliveryanimation.json"
+        app:lottie_loop="false" />
 
     <TextView
         android:id="@+id/animationMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Siparişiniz Onaylanmıştır!"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/lottieAnimation"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lottieAnimation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
