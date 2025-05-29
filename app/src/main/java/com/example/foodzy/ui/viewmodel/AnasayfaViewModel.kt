@@ -14,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AnasayfaViewModel @Inject constructor(var yemeklerRepository: YemeklerRepository) : ViewModel() {
     var yemeklerListesi = MutableLiveData<List<Yemekler>>()
+    private var tumYemeklerListesi = listOf<Yemekler>()
 
     init {
         yemekleriYukle()
@@ -24,6 +25,7 @@ class AnasayfaViewModel @Inject constructor(var yemeklerRepository: YemeklerRepo
             try {
                 val liste = yemeklerRepository.yemekleriYukle()
                 Log.e("YemeklerApi", "Gelen liste: $liste")
+                tumYemeklerListesi = liste
                 yemeklerListesi.value = liste
             } catch (e: Exception) {
                 Log.e("YemeklerApi", "Hata: ${e.localizedMessage}")
@@ -31,5 +33,15 @@ class AnasayfaViewModel @Inject constructor(var yemeklerRepository: YemeklerRepo
         }
     }
 
-    //search islemi ekle
+    fun ara(aramaKelimesi: String){
+        val filtreliListe = if(aramaKelimesi.isBlank()){
+            tumYemeklerListesi
+        }
+        else{
+            tumYemeklerListesi.filter {
+                it.yemek_adi.contains(aramaKelimesi,ignoreCase = true)
+            }
+        }
+        yemeklerListesi.value = filtreliListe
+    }
 }

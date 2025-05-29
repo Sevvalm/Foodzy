@@ -34,6 +34,9 @@
     <argument
             android:name="yemek"
             app:argType="com.example.foodzy.data.entity.Yemekler"/>
+        <action
+            android:id="@+id/detaydanAnasayfaGecis"
+            app:destination="@id/anasayfaFragment2" />
         />
     </fragment>
 </navigation>

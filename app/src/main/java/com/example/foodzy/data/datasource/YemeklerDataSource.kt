@@ -11,7 +11,8 @@ class YemeklerDataSource(var yemeklerDao : YemeklerDao) {
         return@withContext yemeklerDao.yemekleriYukle().yemekler
     }
 
-//    suspend fun resimleriYukle() : List<Yemekler> = withContext(Dispatchers.IO) {
-//        return@withContext yemeklerDao.yemekResimleriGetir().
+//
+//    suspend fun ara(aramaKelimesi: String): List<Yemekler> = withContext(Dispatchers.IO) {
+//
 //    }
 }

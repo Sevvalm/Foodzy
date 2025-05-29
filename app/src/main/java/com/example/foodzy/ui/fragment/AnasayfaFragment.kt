@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.foodzy.R
@@ -38,6 +40,18 @@ class AnasayfaFragment : Fragment() {
             adapter = yemeklerAdapter
 
         }
+
+        //search
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String): Boolean { //Harf girdikce ve silindikce
+                viewModel.ara(newText)
+                return true
+            }
+            override fun onQueryTextSubmit(query: String): Boolean { //Ara buttonuna basilinca
+                viewModel.ara(query)
+                return true
+            }
+        })
         observeViewModel()
 
     }
