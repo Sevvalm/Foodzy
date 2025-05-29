@@ -21,7 +21,11 @@
         android:id="@+id/sepetFragment"
         android:name="com.example.foodzy.ui.fragment.SepetFragment"
         android:label="fragment_sepet"
-        tools:layout="@layout/fragment_sepet" />
+        tools:layout="@layout/fragment_sepet" >
+        <action
+            android:id="@+id/sepettenAnasayfaGecis"
+            app:destination="@id/anasayfaFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/yemekDetayFragment"
         android:name="com.example.foodzy.ui.fragment.YemekDetayFragment"
