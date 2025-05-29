@@ -1,5 +1,6 @@
 package com.example.foodzy.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.foodzy.data.entity.Yemekler
@@ -20,7 +21,15 @@ class AnasayfaViewModel @Inject constructor(var yemeklerRepository: YemeklerRepo
 
     fun yemekleriYukle(){
         CoroutineScope(Dispatchers.Main).launch {
-            yemeklerListesi.value = yemeklerRepository.yemekleriYukle()
+            try {
+                val liste = yemeklerRepository.yemekleriYukle()
+                Log.e("YemeklerApi", "Gelen liste: $liste")
+                yemeklerListesi.value = liste
+            } catch (e: Exception) {
+                Log.e("YemeklerApi", "Hata: ${e.localizedMessage}")
+            }
         }
     }
+
+    //search islemi ekle
 }

@@ -1,5 +1,6 @@
 package com.example.foodzy.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.foodzy.data.entity.Sepet
@@ -19,12 +20,22 @@ class SepetViewModel @Inject constructor(var sepetRepository: SepetRepository) :
     init {
         sepetiYukle()
     }
-
-    //sil ekle
-
     fun sepetiYukle(){
         CoroutineScope(Dispatchers.Main).launch {
-            sepetListesi.value = sepetRepository.sepetiYukle()
+            try {
+                val liste = sepetRepository.sepetiYukle()
+                Log.e("SepetApi", "Gelen liste: $liste")
+                sepetListesi.value = liste
+            } catch (e: Exception) {
+                Log.e("SepetApi", "Hata: ${e.localizedMessage}")
+            }
+        //sepetListesi.value = sepetRepository.sepetiYukle()
+        }
+    }
+
+    fun sepettenSil(sepet_yemek_id : Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            sepetRepository.sepettenSil(sepet_yemek_id)
         }
     }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F8F9FA"
     tools:context=".ui.fragment.AnasayfaFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,8 +14,8 @@
         android:background="@color/toolbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,32 +24,49 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FOODZY"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbarAnasayfa"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/toolbarAnasayfa"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbarAnasayfa" />
 
-    <SearchView
-        android:id="@+id/searchView"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:elevation="2dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarAnasayfa" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAnasayfa">
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:queryHint="Yemek ara..."
+            android:iconifiedByDefault="false"
+            android:background="@android:color/transparent" />
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/yemeklerRv"
-        android:layout_width="409dp"
-        android:layout_height="609dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/searchCardView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

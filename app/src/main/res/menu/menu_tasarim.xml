@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/anasayfaFragment"
+        android:id="@+id/anasayfaFragment2"
         android:icon="@drawable/anasayfa_resim"
         android:title="Anasayfa" />
     <item
-        android:id="@+id/sepetFragmnet"
+        android:id="@+id/sepetFragment"
         android:icon="@drawable/sepet_resim"
         android:title="Sepet" />
 </menu>

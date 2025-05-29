@@ -5,11 +5,14 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.foodzy.data.entity.Yemekler
 import com.example.foodzy.databinding.CardFoodTasarimBinding
 import com.example.foodzy.ui.fragment.AnasayfaFragmentDirections
+import com.example.foodzy.ui.viewmodel.AnasayfaViewModel
+import com.example.foodzy.utils.gecisYap
 
-class YemeklerAdapter (var mContext: Context, var yemeklerListesi: List<Yemekler>) : RecyclerView.Adapter<YemeklerAdapter.CardTasarimTutucu>(){
+class YemeklerAdapter (var mContext: Context, var yemeklerListesi: List<Yemekler> , var viewModel: AnasayfaViewModel) : RecyclerView.Adapter<YemeklerAdapter.CardTasarimTutucu>(){
 
     inner class CardTasarimTutucu(var tasarim: CardFoodTasarimBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -23,20 +26,26 @@ class YemeklerAdapter (var mContext: Context, var yemeklerListesi: List<Yemekler
         val y = holder.tasarim
 
         y.textViewYemekAdi.text = yemek.yemek_adi
-        y.textViewFiyat.text = yemek.yemek_fiyat.toString()
+        y.textViewFiyat.text = "${yemek.yemek_fiyat} ₺"
 
         y.cardViewSatir.setOnClickListener {
             val gecis = AnasayfaFragmentDirections.yemekDetayGecisA(yemek=yemek)
-            Navigation.findNavController(it).navigate(gecis)
+            Navigation.gecisYap(it,gecis)
         }
         y.buttonSepet.setOnClickListener {
             val gecis = AnasayfaFragmentDirections.yemekDetayGecisA(yemek=yemek)
-            Navigation.findNavController(it).navigate(gecis)
+            Navigation.gecisYap(it,gecis)
         }
 
-    }
+        //resimleri al
+        val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
+        Glide.with(mContext).load(url).override(300,300).centerCrop().into(y.imageView)
 
-    override fun getItemCount(): Int {
-        return yemeklerListesi.size
+    }
+    override fun getItemCount(): Int = yemeklerListesi.size
+
+    fun updateList(newList: List<Yemekler>) {
+        yemeklerListesi = newList
+        notifyDataSetChanged()
     }
 }

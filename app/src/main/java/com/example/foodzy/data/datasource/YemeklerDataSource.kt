@@ -8,6 +8,10 @@ import kotlinx.coroutines.withContext
 class YemeklerDataSource(var yemeklerDao : YemeklerDao) {
 
    suspend fun yemekleriYukle(): List<Yemekler> = withContext(Dispatchers.IO) {
-        return@withContext yemeklerDao.yemekleriYukle().sepetYemekler
+        return@withContext yemeklerDao.yemekleriYukle().yemekler
     }
+
+//    suspend fun resimleriYukle() : List<Yemekler> = withContext(Dispatchers.IO) {
+//        return@withContext yemeklerDao.yemekResimleriGetir().
+//    }
 }

@@ -9,4 +9,7 @@ interface YemeklerDao {
 
    @GET("tumYemekleriGetir.php")
    suspend fun yemekleriYukle() : YemeklerCevap
+
+   @GET("resimler/")
+   suspend fun yemekResimleriGetir()
 }

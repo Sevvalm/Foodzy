@@ -1,5 +1,7 @@
 package com.example.foodzy.data.entity
 
-class SepetCevap(var sepetYemekler: List<Sepet>,
-                 var success: Int) {
+import com.google.gson.annotations.SerializedName
+
+class SepetCevap(@SerializedName("sepet_yemekler") var sepetYemekler: List<Sepet>,
+                 @SerializedName("success") var success: Int) {
 }

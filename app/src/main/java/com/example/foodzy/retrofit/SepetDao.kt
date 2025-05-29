@@ -21,7 +21,7 @@ interface SepetDao {
                            @Field("yemek_siparis_adet") yemek_siparis_adet:Int,
                            @Field("kullanici_adi") kullanici_adi:String) : CRUDCevap
 
-    @POST("/yemekler/sepettenYemekSil.php")
+    @POST("sepettenYemekSil.php")
     @FormUrlEncoded
     suspend fun sepettenYemekSil(@Field("sepet_yemek_id") sepet_yemek_id:Int,
                                  @Field("kullanici_adi") kullanici_adi:String) : CRUDCevap
